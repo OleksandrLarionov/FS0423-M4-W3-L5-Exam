@@ -1,6 +1,7 @@
 package Larionov.dao;
 
 import Larionov.entities.CatalogoBibliotecario;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -47,6 +48,5 @@ public class CatalogoBibliotecarioDAO {
         }
 
     };
-
 
 }

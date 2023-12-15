@@ -2,6 +2,7 @@ package Larionov;
 
 
 import Larionov.dao.CatalogoBibliotecarioDAO;
+import Larionov.dao.UtenteDAO;
 import com.github.javafaker.Faker;
 
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ public class Application {
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
         CatalogoBibliotecarioDAO cbd = new CatalogoBibliotecarioDAO(em);
+        UtenteDAO ud = new UtenteDAO(em);
         Faker faker = new Faker();
 
 

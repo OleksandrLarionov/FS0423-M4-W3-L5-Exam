@@ -10,7 +10,7 @@ import java.time.LocalDate;
 public abstract class CatalogoBibliotecario {
     @Id
     @GeneratedValue
-    private UID String;
+    private UID uid;
     private String titolo;
     private LocalDate annoDiPubblicazione;
     private int numeroDiPagine;
@@ -23,7 +23,7 @@ public abstract class CatalogoBibliotecario {
     }
 
     public UID getString() {
-        return String;
+        return uid;
     }
 
     public java.lang.String getTitolo() {
@@ -53,7 +53,7 @@ public abstract class CatalogoBibliotecario {
     @Override
     public java.lang.String toString() {
         return "CatalogoBibliotecario{" +
-                "String=" + String +
+                "String=" + uid +
                 ", titolo='" + titolo + '\'' +
                 ", annoDiPubblicazione=" + annoDiPubblicazione +
                 ", numeroDiPagine=" + numeroDiPagine +
