@@ -1,17 +1,23 @@
 package Larionov.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 @Entity
+@Table(name = "rent")
 public class Rent {
     @Id
     @GeneratedValue
     private Long id;
+    @ManyToOne
+    @JoinColumn(name = "utente_id")
     private Utente utente;
     private LocalDate dataInizioPrestito = LocalDate.now();
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "articolo_prestato_libro_id")
+    private Libro articoloPrestatoLibro;
+
     private LocalDate dataRestituzionePrevista;
 
     private LocalDate dataRestitutioneEffettiva;
@@ -19,10 +25,12 @@ public class Rent {
     public Rent() {
     }
 
-    public Rent(Utente utente) {
+    public Rent(Utente utente, Libro articoloPrestatoLibro) {
         this.utente = utente;
-        this.dataRestituzionePrevista = this.dataInizioPrestito.plusDays(30);
+        this.articoloPrestatoLibro = articoloPrestatoLibro;
+        this.dataRestituzionePrevista = LocalDate.now().plus(30, ChronoUnit.DAYS);
     }
+
 
     public Long getId() {
         return id;
@@ -36,12 +44,21 @@ public class Rent {
         return dataInizioPrestito;
     }
 
+    public Libro getArticoloPrestatoLibro() {
+        return articoloPrestatoLibro;
+    }
+
+
     public LocalDate getDataRestituzionePrevista() {
         return dataRestituzionePrevista;
     }
 
     public LocalDate getDataRestitutioneEffettiva() {
         return dataRestitutioneEffettiva;
+    }
+
+    public void setUtente(Utente utente) {
+        this.utente = utente;
     }
 
     public void setDataRestitutioneEffettiva(LocalDate dataRestitutioneEffettiva) {
@@ -54,6 +71,7 @@ public class Rent {
                 "id=" + id +
                 ", utente=" + utente +
                 ", dataInizioPrestito=" + dataInizioPrestito +
+                ", articoloPrestatoLibro=" + articoloPrestatoLibro +
                 ", dataRestituzionePrevista=" + dataRestituzionePrevista +
                 ", dataRestitutioneEffettiva=" + dataRestitutioneEffettiva +
                 '}';

@@ -1,15 +1,26 @@
 package Larionov.entities;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Rivista extends CatalogoBibliotecario{
+    @Enumerated(EnumType.STRING)
     private PERIODICITA periodicita;
+
+    @ManyToMany
+    @JoinTable(
+            name = "rivista_catalogo",
+            joinColumns = @JoinColumn(name = "rivista_id"),
+            inverseJoinColumns = @JoinColumn(name = "catalogo_id")
+    )
+    private List<Rivista> riviste = new ArrayList<>();
 
 
     public Rivista(){}
-    public Rivista(java.lang.String titolo, LocalDate annoDiPubblicazione, int numeroDiPagine, PERIODICITA periodicita) {
+    public Rivista(java.lang.String titolo, long annoDiPubblicazione, int numeroDiPagine, PERIODICITA periodicita) {
         super(titolo, annoDiPubblicazione, numeroDiPagine);
         this.periodicita = periodicita;
     }
