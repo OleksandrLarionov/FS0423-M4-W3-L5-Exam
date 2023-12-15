@@ -50,11 +50,11 @@ public class Application {
 
 //        cbd.rimuoviElementoPerISBN(52);
 
-        System.out.printf("***********************CERCA PER L'ANNO*********************");
+        System.out.println("***********************CERCA PER L'ANNO*********************");
 
         cbd.cercaPerAnnoPubblicazione(1800).forEach(System.out::println);
 
-        System.out.printf("*****************CERCA PER AUTORE******************");
+        System.out.println("*****************CERCA PER AUTORE******************");
 
         cbd.cercaPerAutore("Mozart").forEach(System.out::println);
 
