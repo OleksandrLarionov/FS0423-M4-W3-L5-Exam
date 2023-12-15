@@ -2,7 +2,6 @@ package Larionov.entities;
 
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +11,9 @@ public class Libro extends CatalogoBibliotecario{
     @Enumerated(EnumType.STRING)
     private GENERE genere;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
-    @JoinTable(
-            name = "catalogo_libro",
-            joinColumns = @JoinColumn(name = "libro_id"),
-            inverseJoinColumns = @JoinColumn(name = "catalogo_id")
-    )
-    private List<CatalogoBibliotecario> catalogo = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "catalogo_id")
+    private CatalogoBibliotecario catalogoBibliotecario;
 
     public Libro(){}
     public Libro(java.lang.String titolo, long annoDiPubblicazione,

@@ -50,6 +50,7 @@ public class CatalogoBibliotecarioDAO {
         }
 
     };
+
     public List<CatalogoBibliotecario> cercaPerAnnoPubblicazione(long anno) {
         TypedQuery<CatalogoBibliotecario> query = em.createQuery(
                 "SELECT c FROM CatalogoBibliotecario c WHERE c.annoDiPubblicazione = :anno", CatalogoBibliotecario.class);

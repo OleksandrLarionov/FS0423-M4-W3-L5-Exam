@@ -1,7 +1,6 @@
 package Larionov.entities;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,19 +14,9 @@ public abstract class CatalogoBibliotecario {
     private long annoDiPubblicazione;
     private int numeroDiPagine;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "catalogo_libro",
-            joinColumns = @JoinColumn(name = "catalogo_id"),
-            inverseJoinColumns = @JoinColumn(name = "libro_id")
-    )
+    @OneToMany(mappedBy = "catalogoBibliotecario")
     private List<Libro> libri = new ArrayList<>();
-    @ManyToMany
-    @JoinTable(
-            name = "catalogo_rivista",
-            joinColumns = @JoinColumn(name = "catalogo_id"),
-            inverseJoinColumns = @JoinColumn(name = "rivista_id")
-    )
+    @OneToMany(mappedBy = "catalogoBibliotecario")
     private List<Rivista> riviste = new ArrayList<>();
 
 

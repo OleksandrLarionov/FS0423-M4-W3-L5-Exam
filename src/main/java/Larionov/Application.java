@@ -28,33 +28,34 @@ public class Application {
         //********************************CREAZIONE UTENTE*************************
 
         Utente userUno = new Utente("Paolo","Spada", LocalDate.of(1991,2,2),123456);
-//        ud.save(userUno);
+        ud.save(userUno);
 
         //********************************REGISTRAZIONE DEI LIBRI NEL CATALOGO*************************
 
         Libro libroUno = new Libro("Amore Profondo",1800,30,"Mozart", GENERE.MYSTERY);
-//        cbd.save(libroUno);
+        cbd.save(libroUno);
 
         Libro libroDue = new Libro("Amore Profondo 2",1810,200,"Mozart", GENERE.MYSTERY);
-//        cbd.save(libroDue);
+        cbd.save(libroDue);
 
         //********************************RENT*************************
 
         Rent rentUno = new Rent(userUno,libroDue);
-//        rd.save(rentUno);
+        rd.save(rentUno);
         Rent rentDue = new Rent(userUno, libroUno);
-//        rd.save(rentDue);
+        rd.save(rentDue);
 
 
+//      **********RIMOZIONE DAL CATALOGO SOLO SE IL LIBRO NON é IN AFFITTO**********
 
-//         cbd.rimuoviElementoPerISBN(38);
+//        cbd.rimuoviElementoPerISBN(52);
 
         System.out.printf("***********************CERCA PER L'ANNO*********************");
 
         cbd.cercaPerAnnoPubblicazione(1800).forEach(System.out::println);
 
         System.out.printf("*****************CERCA PER AUTORE******************");
-        
+
         cbd.cercaPerAutore("Mozart").forEach(System.out::println);
 
 

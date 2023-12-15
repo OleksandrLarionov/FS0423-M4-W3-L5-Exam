@@ -10,13 +10,9 @@ public class Rivista extends CatalogoBibliotecario{
     @Enumerated(EnumType.STRING)
     private PERIODICITA periodicita;
 
-    @ManyToMany
-    @JoinTable(
-            name = "rivista_catalogo",
-            joinColumns = @JoinColumn(name = "rivista_id"),
-            inverseJoinColumns = @JoinColumn(name = "catalogo_id")
-    )
-    private List<Rivista> riviste = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "catalogo_id")
+    private CatalogoBibliotecario catalogoBibliotecario;
 
 
     public Rivista(){}
